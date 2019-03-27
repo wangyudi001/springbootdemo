@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/js/jquery-1.11.3.min.js}" rel="stylesheet"/>
+</head>
+<body>
+<form id="loginFrom">
+    <div>
+        <h2>管理登录</h2>
+        <span><label>用户名</label></span>
+        <span><input type="text" id="username" name="username" onkeypress="doLogin()" class="username" maxlength="15"/></span>
+    </div>
+    <div>
+        <span><label>密码</label></span>
+        <span><input type="password" id="password" name="password" onkeypress="doLogin()" class="password " maxlength="15"/></span>
+    </div>
+    <div class="sign">
+        <input type="button" value="登录" class="submit" onclick="doLogin();" />
+    </div>
+</form>
+</body>
+<script >
+    function doLogin(){
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        $.ajax({
+            url: "localhost:8080/user/login",//需要提交到的地址
+            type: "POST", //提交的类型 POST/GET
+            data: {
+                username: username,
+                password: password
+            },
+            success: function (data)
+            {
+                alert("tongguo");
+            }
+        })
+
+
+
+    }
+</script>
+</html>

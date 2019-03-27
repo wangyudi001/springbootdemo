@@ -32,15 +32,7 @@ public class UserController {
         return userList;
     }
 
-    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public Boolean login(String username, String password){
-        User user = userService.selectUserById(1);
-        if(username.equals(user.getUserName()) && password.equals(user.getUserPassword())){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
 
 }

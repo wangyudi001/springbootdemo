@@ -7,41 +7,41 @@ public class RenderJson {
     private Object data;
     private Object attr;
 
-    public static RenderJson Ok(String code, String message){
+    public static RenderJson Ok(String code, String message) {
         RenderJson json = new RenderJson();
         json.setCode(code);
         json.setMessage(message);
         return json;
     }
 
-    public static RenderJson Ok(String code, String message, Object data){
+    public static RenderJson Ok(String code, String message, Object data) {
         RenderJson json = new RenderJson();
         json.setCode(code);
         json.setMessage(message);
-        if(data != null){
+        if (data != null) {
             json.setData(data);
         }
         return json;
     }
 
-    public static RenderJson Ok(String code, String message, Object data, Object attr){
+    public static RenderJson Ok(String code, String message, Object data, Object attr) {
         RenderJson json = new RenderJson();
         json.setCode(code);
         json.setMessage(message);
-        if(data != null){
+        if (data != null) {
             json.setData(data);
         }
         json.setAttr(attr);
         return json;
     }
 
-    public static RenderJson No(String errCode, String errMessage){
+    public static RenderJson No(String errCode, String errMessage, String sttr) {
         RenderJson json = new RenderJson();
         json.setCode(errCode);
         json.setMessage(errMessage);
+        json.setAttr(sttr);
         return json;
     }
-
 
     public String getCode() {
         return code;

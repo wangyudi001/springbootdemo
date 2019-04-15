@@ -8,4 +8,12 @@ public interface UserService {
 	User selectUserById(Integer userId);
 
 	List<User> getAllUsers();
+
+	User getUserByUsername(String username);
+
+	Boolean delUserById(Integer id);
+
+	Boolean updUserById(User user);
+
+	Boolean addUser(User user);
 }

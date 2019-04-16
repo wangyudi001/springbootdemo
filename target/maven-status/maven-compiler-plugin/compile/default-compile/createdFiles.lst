@@ -1,7 +1,0 @@
-com\boot\domain\User.class
-com\boot\web\UserController.class
-com\boot\service\impl\UserServiceImpl.class
-com\boot\web\MainController.class
-com\boot\dao\UserDao.class
-com\boot\Application.class
-com\boot\service\UserService.class

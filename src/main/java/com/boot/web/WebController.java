@@ -16,10 +16,10 @@ public class WebController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/index")
     public String getIndex(Model model){
-        User user = userService.selectUserById(1);
+        User user = userService.selectUserById(11);
         model.addAttribute("user", user);
-        return "login";
+        return "index";
     }
 }

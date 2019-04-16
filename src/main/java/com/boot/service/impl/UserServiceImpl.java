@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean delUserById(Integer id){
+    public Boolean delUserById(Integer id) {
         return userDao.delUserById(id) == 0 ? false : true;
     }
 
@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean addUser(User user)   {
-        return userDao.addUser(user) == 0? false : true;
+    public Boolean addUser(User user) {
+        return userDao.addUser(user) == 0 ? false : true;
     }
 
 }

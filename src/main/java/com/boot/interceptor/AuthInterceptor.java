@@ -9,7 +9,6 @@ import com.boot.annotation.PassToken;
 import com.boot.annotation.UserLoginToken;
 import com.boot.domain.User;
 import com.boot.service.UserService;
-import com.boot.util.RenderJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * @Date 2019/4/16 11:11
  * @Version 1.0
  */
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserLoginToken {
     boolean required() default true;

@@ -17,7 +17,7 @@ public class WebController {
     private UserService userService;
 
     @RequestMapping(value = "/index")
-    public String getIndex(Model model){
+    public String getIndex(Model model) {
         User user = userService.selectUserById(11);
         model.addAttribute("user", user);
         return "index";

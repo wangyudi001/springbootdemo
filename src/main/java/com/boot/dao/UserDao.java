@@ -7,7 +7,7 @@ import com.boot.domain.User;
 import java.util.List;
 
 @Mapper
-public interface UserDao {  
+public interface UserDao {
     User selectUserById(Integer userId);
 
     List<User> getAllUsers();

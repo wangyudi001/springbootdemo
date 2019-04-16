@@ -37,12 +37,12 @@ public class LoginController {
             jsonObject.put("attr", "User does not exist");
             return jsonObject;
         } else {
-            if(!item.getUserPassword().equals(user.getUserPassword())){
+            if (!item.getUserPassword().equals(user.getUserPassword())) {
                 jsonObject.put("message", "Fail");
                 jsonObject.put("code", "1");
                 jsonObject.put("attr", "Error Password");
                 return jsonObject;
-            }else {
+            } else {
                 String token = tokenService.getToken(item);
                 jsonObject.put("message", "Success");
                 jsonObject.put("code", "0");
@@ -51,7 +51,6 @@ public class LoginController {
             }
         }
     }
-
 
 
 }

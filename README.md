@@ -1,6 +1,14 @@
 # springbootdemo
 this is a springboot project
 
+## 项目框架
+
+* Maven
+* Springboot
+* Mybatis
+* Mysql
+* Jwt
+
 ## 已完成
 
 * 集成mybatis、mysql

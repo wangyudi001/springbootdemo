@@ -18,7 +18,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String getToken(User user) {
         String token = "";
-        token = JWT.create().withAudience(user.getUserId()).withExpiresAt(new Date(System.currentTimeMillis() + 86400000)).sign(Algorithm.HMAC256(user.getUserPassword()));
+        token = JWT.create().withAudience(user.getUserId()).withExpiresAt(new Date(System.currentTimeMillis() + 3600000)).sign(Algorithm.HMAC256(user.getUserPassword()));
         return token;
     }
 }

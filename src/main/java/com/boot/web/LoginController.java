@@ -27,7 +27,7 @@ public class LoginController {
     @Autowired
     private TokenService tokenService;
 
-    @RequestMapping(value = "log", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public JSONObject login(@RequestBody User user) {
         User item = userService.getUserByUsername(user.getUserName());
         JSONObject jsonObject = new JSONObject();

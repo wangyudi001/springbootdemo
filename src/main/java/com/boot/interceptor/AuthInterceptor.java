@@ -54,7 +54,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);
             if (userLoginToken.required()) {
                 if (token == null || token == "") {
-                    throw new RuntimeException("No token, please check or login again");
+                    throw new RuntimeException("401. No token, please check or login again");
                 }
 
                 // 异常捕获
@@ -62,11 +62,11 @@ public class AuthInterceptor implements HandlerInterceptor {
                 try {
                     userId = JWT.decode(token).getAudience().get(0);
                 } catch (JWTDecodeException j) {
-                    throw new RuntimeException("Token error, please check or login again");
+                    throw new RuntimeException("401. Token error, please check or login again");
                 }
                 User user = userService.selectUserById(Integer.parseInt(userId));
                 if (user == null) {
-                    throw new RuntimeException("The user does not exist, please check or login again");
+                    throw new RuntimeException("401. The token'user does not exist, please check or login again");
                 }
 
                 // 开始验证
@@ -74,7 +74,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                 try {
                     jwtVerifier.verify(token);
                 } catch (JWTVerificationException e) {
-                    throw new RuntimeException("Token Validation Failure");
+                    throw new RuntimeException("401. Token validation failure, please check or login again");
                 }
                 return true;
             }

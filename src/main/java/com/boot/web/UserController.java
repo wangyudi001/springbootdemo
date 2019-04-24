@@ -1,6 +1,5 @@
 package com.boot.web;
 
-import com.boot.annotation.PassToken;
 import com.boot.annotation.UserLoginToken;
 import com.boot.util.RenderJson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,6 @@ public class UserController {
     public RenderJson getUsers() {
         List<User> userList = userService.getAllUsers();
         return RenderJson.Ok("0", "success", userList);
-    }
-
-    @RequestMapping(value = "/getUserByUsername", method = RequestMethod.GET)
-    @PassToken
-    public RenderJson getUserByUsername(@RequestParam("username") String username, @RequestParam("password") String password) {
-        User user = userService.getUserByUsername(username);
-        return user != null && user.getUserPassword().equals(password) ? RenderJson.Ok("0", "Success", user) : RenderJson.No("1", "fail", "Username or password error! Please check again.");
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.DELETE)

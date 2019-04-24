@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.boot.domain.User;
 import com.boot.service.TokenService;
 import com.boot.service.UserService;
+import com.boot.util.RenderJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,26 +29,18 @@ public class LoginController {
     private TokenService tokenService;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public JSONObject login(@RequestBody User user) {
+    public RenderJson login(@RequestBody User user) {
         User item = userService.getUserByUsername(user.getUserName());
-        JSONObject jsonObject = new JSONObject();
         if (item == null) {
-            jsonObject.put("message", "Fail");
-            jsonObject.put("code", "1");
-            jsonObject.put("attr", "User does not exist");
-            return jsonObject;
+            return RenderJson.No("1", "Fail", "User does not exist");
         } else {
             if (!item.getUserPassword().equals(user.getUserPassword())) {
-                jsonObject.put("message", "Fail");
-                jsonObject.put("code", "1");
-                jsonObject.put("attr", "Error Password");
-                return jsonObject;
+                return RenderJson.No("1", "Fail", "Error Password");
             } else {
                 String token = tokenService.getToken(item);
-                jsonObject.put("message", "Success");
-                jsonObject.put("code", "0");
+                JSONObject jsonObject = new JSONObject();
                 jsonObject.put("token", token);
-                return jsonObject;
+                return RenderJson.Ok("0", "Success", jsonObject);
             }
         }
     }

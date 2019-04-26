@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link th:href="@{/js/jquery-1.11.3.min.js}" rel="stylesheet"/>
 </head>
-<body>  
-	<h2>Hello World!</h2>
-    <h2>index page!</h2>
-    <p th:text="${user.userId}"></p>
-    <p th:text="${user.userName}"></p>
-    <p th:text="${user.userPassword}"></p>
-    <p th:text="${user.userEmail}"></p>
+<body>
+    <p th:text="${info}"></p>
+    <h1>123</h1>
+    <input type="button" value="发送get_ajax请求" id='btnAjax'>
+    <input type="button" value="发送post_ajax请求" id="postbtn">
 </body>
 </html>
+<script type="text/javascript">
+    document.querySelector("#btnAjax").onclick = function() {
+        var ajaxObj = new XMLHttpRequest();
+        ajaxObj.open("get", "http://localhost:8080/all");
+        ajaxObj.send();
+        ajaxObj.onreadystatechange = function() {
+            if(ajaxObj.readyState == 4 && ajaxObj.status == 200){
+                console.log("succ");
+                console.log(ajaxObj.responseText);
+                document.querySelector('h1').innerHTML = ajaxObj.responseText;
+            }
+        }
+    }
+
+    document.querySelector("#postbtn").onclick = function() {
+        var req = new XMLHttpRequest();
+        req.open("post", "http://localhost:8080/add");
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.send("userName=123444&userPassword=12323123");
+        req.onreadystatechange = function() {
+            if (req.readyState == 4 && req.status == 200) {
+                console.log("succ");
+                console.log(req.responseText);
+                document.querySelector('h1').innerHTML = req.responseText;
+            }
+        }
+    }
+</script>

@@ -40,6 +40,7 @@ public class LoginController {
                 String token = tokenService.getToken(item);
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("token", token);
+                jsonObject.put("user", item.getUserName());
                 return RenderJson.Ok("0", "Success", jsonObject);
             }
         }

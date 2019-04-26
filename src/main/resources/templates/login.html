@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta content="text/html;charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link th:href="@{/js/jquery-1.11.3.min.js}" rel="stylesheet"/>
 </head>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $.ajax({
+        url : 'http://localhost:8080/all',
+        type : 'get',
+        headers: {
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjM1MTU1OX0.queWCnPAasmX0Q-blSyoNnG_EuUouC1uh0GJZpl_ta4"
+        },
+        data : '',    // type: 默认返回的是头条，可以选择的，这个。
+        dataType : 'json',
+        success : function(msg){
+            console.log(msg)
+        },
+        error : function(err){
+            alert('通信失败');
+        }
+    });
+</script>
+
 <body>
-login page！
 </body>
 
 </html>

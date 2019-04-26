@@ -17,6 +17,7 @@ this is a springboot project
 * 实现跨域访问
 * 集成JWT实现Token验证
 * 添加全局异常捕获处理
+* 使用原生ajax和jquary ajax发送请求
 
 ## 
 

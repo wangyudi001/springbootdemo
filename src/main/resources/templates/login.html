@@ -2,40 +2,49 @@
 <head>
 </head>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-/*    $.ajax({
-        url : 'http://localhost:8080/all',
-        type : 'get',
-        headers: {
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjM1MTU1OX0.queWCnPAasmX0Q-blSyoNnG_EuUouC1uh0GJZpl_ta4"
-        },
-        data : '',    // type: 默认返回的是头条，可以选择的，这个。
-        dataType : 'json',
-        success : function(msg){
-            console.log(msg)
-        },
-        error : function(err){
-            alert('通信失败');
-        }
-    });*/
 
-    $.ajax({
-        url : 'http://localhost:8080/login',
-        type : 'post',
-        data : '{"userName":"1234","userPassword":"1234"}',
-        dataType : 'json',
-        contentType: 'application/json;charset-UTF-8',
-        success : function(msg){
-            console.log(msg)
-        },
-        error : function(err){
-            console.log(err)
-        }
-    });
-</script>
 
 <body>
+    <input type="button" value="发送post_ajax请求" id="btnAjax">
 </body>
 
 </html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    /*    $.ajax({
+            url : 'http://localhost:8080/all',
+            type : 'get',
+            headers: {
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjM1MTU1OX0.queWCnPAasmX0Q-blSyoNnG_EuUouC1uh0GJZpl_ta4"
+            },
+            data : '',    // type: 默认返回的是头条，可以选择的，这个。
+            dataType : 'json',
+            success : function(msg){
+                console.log(msg)
+            },
+            error : function(err){
+                alert('通信失败');
+            }
+        });*/
+    document.querySelector("#btnAjax").onclick = function() {
+        $.ajax({
+            url: 'http://localhost:8080/add',
+            type: 'post',
+            data: '{"userName":"1234","userPassword":"1234"}',
+            dataType: 'json',
+            contentType: 'application/json;charset-UTF-8',
+            headers: {
+                "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjUyODUzMH0.UGe2UfeUfgmGhAlTDopjdz0tkGHGUQf_JG35Rns5pEw",
+            },
+            success: function (msg) {
+                if(msg.code != 1){
+                    console.log(msg);
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>

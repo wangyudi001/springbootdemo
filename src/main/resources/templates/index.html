@@ -7,7 +7,7 @@
 </head>
 <body>
     <p th:text="${info}"></p>
-    <h1>123</h1>
+    <h1 id="information">123</h1>
     <input type="button" value="发送get_ajax请求" id='btnAjax'>
     <input type="button" value="发送post_ajax请求" id="postbtn">
 </body>
@@ -29,13 +29,14 @@
     document.querySelector("#postbtn").onclick = function() {
         var req = new XMLHttpRequest();
         req.open("post", "http://localhost:8080/add");
-        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.send("userName=123444&userPassword=12323123");
+        req.setRequestHeader("Content-type", "application/json;charset-UTF-8");
+        req.setRequestHeader("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjUyODUzMH0.UGe2UfeUfgmGhAlTDopjdz0tkGHGUQf_JG35Rns5pEw");
+        req.send('{"userName":"444","userPassword":"444"}');
         req.onreadystatechange = function() {
             if (req.readyState == 4 && req.status == 200) {
                 console.log("succ");
                 console.log(req.responseText);
-                document.querySelector('h1').innerHTML = req.responseText;
+                document.getElementById('information').innerHTML = req.responseText;
             }
         }
     }

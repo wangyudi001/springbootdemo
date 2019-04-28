@@ -19,11 +19,13 @@
             alert('通信失败');
         }
     });*/
+
     $.ajax({
         url : 'http://localhost:8080/login',
-        type : 'get',
-        data : '',    // type: 默认返回的是头条，可以选择的，这个。
+        type : 'post',
+        data : '{"userName":"1234","userPassword":"1234"}',
         dataType : 'json',
+        contentType: 'application/json;charset-UTF-8',
         success : function(msg){
             console.log(msg)
         },

@@ -4,11 +4,11 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    $.ajax({
+/*    $.ajax({
         url : 'http://localhost:8080/all',
         type : 'get',
         headers: {
-          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjM1MTU1OX0.queWCnPAasmX0Q-blSyoNnG_EuUouC1uh0GJZpl_ta4"
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNiIsImV4cCI6MTU1NjM1MTU1OX0.queWCnPAasmX0Q-blSyoNnG_EuUouC1uh0GJZpl_ta4"
         },
         data : '',    // type: 默认返回的是头条，可以选择的，这个。
         dataType : 'json',
@@ -17,6 +17,18 @@
         },
         error : function(err){
             alert('通信失败');
+        }
+    });*/
+    $.ajax({
+        url : 'http://localhost:8080/login',
+        type : 'get',
+        data : '',    // type: 默认返回的是头条，可以选择的，这个。
+        dataType : 'json',
+        success : function(msg){
+            console.log(msg)
+        },
+        error : function(err){
+            console.log(err)
         }
     });
 </script>

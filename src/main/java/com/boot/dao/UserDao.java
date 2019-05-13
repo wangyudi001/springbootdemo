@@ -19,4 +19,6 @@ public interface UserDao {
     Integer UpdUserById(User user);
 
     Integer addUser(User user);
+
+    Integer getCountByName(String username);
 }

@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer getCountByName(String username) {
+        return userDao.getCountByName(username);
+    }
+
+    @Override
     public Boolean addUser(User user) {
         return userDao.addUser(user) == 0 ? false : true;
     }

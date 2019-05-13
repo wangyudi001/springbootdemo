@@ -16,4 +16,6 @@ public interface UserService {
 	Boolean updUserById(User user);
 
 	Boolean addUser(User user);
+
+	Integer getCountByName(String username);
 }

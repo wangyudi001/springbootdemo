@@ -35,5 +35,9 @@
         insert into t_user (user_name, user_password, user_email, user_phone) values (#{userName}, #{userPassword}, #{userEmail}, #{phone})
     </insert>
 
+    <select id="getCountByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from t_user where user_name = #{username}
+    </select>
+
 
 </mapper>

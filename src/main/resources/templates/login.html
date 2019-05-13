@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <head>
 </head>
-
-
-
 <body>
+    <h1>000</h1>
+    <input type="text" id="aaa">
+    <input type="password" id="bbb">
     <input type="button" value="发送post_ajax请求" id="btnAjax">
+    <br>
 </body>
-
+<footer>123</footer>
 </html>
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     /*    $.ajax({
@@ -28,10 +28,12 @@
             }
         });*/
     document.querySelector("#btnAjax").onclick = function() {
+        var username = document.getElementById("aaa").value;
+        var password = document.getElementById("bbb").value;
         $.ajax({
             url: 'http://localhost:8080/add',
             type: 'post',
-            data: '{"userName":"1234","userPassword":"1234"}',
+            data: '{"userName":"' + username +'","userPassword":" ' + password + ' "}',
             dataType: 'json',
             contentType: 'application/json;charset-UTF-8',
             headers: {
@@ -40,11 +42,17 @@
             success: function (msg) {
                 if(msg.code != 1){
                     console.log(msg);
+                    var x = document.querySelectorAll("h1");
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].innerHTML = JSON.stringify(msg);
+                    }
                 }
             },
             error: function (err) {
-                console.log(err);
-            }
+                console.error(err);
+                document.querySelector("h1").innerHTML = JSON.stringify(err);
+            },
         });
     }
+
 </script>

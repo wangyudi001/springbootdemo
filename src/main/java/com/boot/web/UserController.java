@@ -41,7 +41,17 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @UserLoginToken
     public RenderJson addUser(@RequestBody User user){
+        int count = userService.getCountByName(user.getUserName());
+        if (count >=  1){
+            return RenderJson.No("1", "Fail", "This user already exists!");
+        }
         Boolean bool = userService.addUser(user);
         return bool? RenderJson.Ok("0", "Success") : RenderJson.No("1", "Fail", "Unknown Error");
+    }
+
+    @RequestMapping(value = "/exist", method = RequestMethod.GET)
+    public RenderJson getUserCount(@RequestParam("username") String username){
+        int count = userService.getCountByName(username);
+        return RenderJson.Ok("0", "Success", count);
     }
 }

@@ -31,7 +31,7 @@
         update t_user set user_name = #{userName}, user_password = #{userPassword}, user_email = #{userEmail}, user_phone = #{phone} where user_id = #{userId}
     </update>
 
-    <insert id="addUser" parameterType="com.boot.domain.User">
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="userId" parameterType="com.boot.domain.User">
         insert into t_user (user_name, user_password, user_email, user_phone) values (#{userName}, #{userPassword}, #{userEmail}, #{phone})
     </insert>
 

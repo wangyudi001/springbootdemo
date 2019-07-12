@@ -42,6 +42,3 @@ logging:
   level:
     root: info
 
-server:
-  #端口号
-  port: 8888
